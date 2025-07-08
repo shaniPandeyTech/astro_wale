@@ -1,61 +1,11 @@
 'use client';
-
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const testimonials = [
-    {
-        id: 1,
-        title: "Our Trusted Partners",
-        image: "/images/rajpal.jpg",
-        playIcon: "/images/youtube-icon.png",
-    },
-    {
-        id: 2,
-        title: "Loan Approval Within 30 Minutes",
-        image: "/images/rajpal.jpg",
-        playIcon: "/images/youtube-icon.png",
-    },
-    {
-        id: 3,
-        title: "Assured Warranty",
-        image: "/images/rajpal.jpg",
-        playIcon: "/images/youtube-icon.png",
-    },
-    {
-        id: 4,
-        title: "Quality Checks",
-        image: "/images/rajpal.jpg",
-        playIcon: "/images/youtube-icon.png",
-    },
-    {
-        id: 5,
-        title: "Our Trusted Partners",
-        image: "/images/rajpal.jpg",
-        playIcon: "/images/youtube-icon.png",
-    },
-    {
-        id: 6,
-        title: "Loan Approval Within 30 Minutes",
-        image: "/images/rajpal.jpg",
-        playIcon: "/images/youtube-icon.png",
-    },
-    {
-        id: 7,
-        title: "Assured Warranty",
-        image: "/images/rajpal.jpg",
-        playIcon: "/images/youtube-icon.png",
-    },
-    {
-        id: 8,
-        title: "Quality Checks",
-        image: "/images/rajpal.jpg",
-        playIcon: "/images/youtube-icon.png",
-    }
-];
 
 const CelebrityClients = () => {
     const [startIndex, setStartIndex] = useState(0);
+    const [testimonials, setTestimonialsData] = useState([]);
     const visibleCount = 4;
 
     const prevSlide = () => {
@@ -73,6 +23,21 @@ const CelebrityClients = () => {
         );
     };
 
+    useEffect(() => {
+        fetch('https://api.indiandetectiveservices.com/public/api/v1/reviews')
+            .then(res => res.json())
+            .then(resData => {
+                if (resData.success === 1 && Array.isArray(resData.data)) {
+                    setTestimonialsData(resData.data); // ✅ store only data array
+                } else {
+                    console.error('API call successful but data missing');
+                }
+            })
+            .catch(err => {
+                console.error('Error fetching astrologerss:', err);
+            });
+    }, []);
+
     return (
         <section className="py-12 bg-[#FFF7F1] border-b">
             <div className="container mx-auto px-4">
@@ -83,35 +48,37 @@ const CelebrityClients = () => {
                 <div className="relative">
 
 
-                    <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center px-20 p">
+                    <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center px-20 p h-[600px]">
                         {getVisibleTestimonials().map((item) => (
 
 
                             <div key={item.id} className="w-1/4 flex-shrink-0 mx-2 ">
                                 <div className='bg-[#EF6800] rounded-2xl'>
                                     <div className='relative'>
-                                    <Image
-                                        src={item.image}
-                                        alt={item.title}
-                                        width={345}
-                                        height={455}
-                                        className="w-full  object-cover"
-                                    />
+                                        <Image
+                                            src={item.youtube_lik}
+                                            alt={item.title}
+                                            width={345}
+                                            height={455}
+                                            className="w-full  object-cover"
+                                        />
 
-<Image
-                                        src={item.playIcon}
-                                        alt={item.title}
-                                        width={62}
-                                        height={62}
-                                        className="absolute top-1/2 left-1/2 w-16 h-16 cursor-pointer -ml-8 -mt-8"
-                                    />
+                                        <Image
+                                            src="/images/youtube-icon.png"
+                                            alt={item.title}
+                                            width={62}
+                                            height={62}
+                                            className="absolute top-1/2 left-1/2 w-16 h-16 cursor-pointer -ml-8 -mt-8"
+                                        />
 
-</div>
-
+                                    </div>
+                                    
                                     <div className="p-4">
-                                        <p className="text-white font-medium italic py-1">Horoscope Vale's astrological insights have been truly enlightening. Their predictions and remedies are accurate and deeply rooted in Vedic wisdom!</p>
+                                        <p className="text-white font-medium italic py-1"> {item.comment.length > 80
+                                            ? `${item.comment.slice(0, 80)}...`
+                                            : item.comment}</p>
 
-                                        <p className="text-white font-semibold my-2">-Rajpal Yadav</p>
+                                        <p className="text-white font-semibold my-2">-{item.name},{item.city}</p>
                                     </div>
                                 </div>
                             </div>

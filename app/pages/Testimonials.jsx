@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const testimonials = [
   {
@@ -30,8 +30,23 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+
+  const [reviews, setReviews] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = 4; 
+  const visibleCount = 4;
+
+  useEffect(() => {
+    fetch('https://api.indiandetectiveservices.com/public/api/v1/reviews')
+      .then(res => res.json())
+      .then(data => {
+        setReviews(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching reviews:', err);
+        setLoading(false);
+      });
+  }, []);
 
   const prevSlide = () => {
     setStartIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
@@ -52,21 +67,10 @@ const Testimonials = () => {
     <section className="py-12 bg-white border-b">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-10 text-center">
-          What Our Customers Say About Horoscope Vale
+          What Our Customers Say About Horoscope Vale 
         </h2>
 
-
-
-
-
-
-
-
-
-        
-
         <div className="relative">
-
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center px-5">
             {getVisibleTestimonials().map((item) => (
@@ -80,15 +84,12 @@ const Testimonials = () => {
 
           <div className="flex justify-center gap-4 mt-6">
             <button onClick={prevSlide} className="absolute  items-center justify-center top-1/2 -left-4 transform -translate-y-1/2  bg-black/50 text-black bg-white rounded-2xl w-8 h-36 flex ">
-            ❮
+              ❮
             </button>
             <button onClick={nextSlide} className="absolute  items-center justify-center top-1/2 -right-4 transform -translate-y-1/2  bg-black/50 text-black bg-white rounded-2xl w-8 h-36 flex ">
-            ❯
+              ❯
             </button>
           </div>
-
-
-
 
         </div>
       </div>

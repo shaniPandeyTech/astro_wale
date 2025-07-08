@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 import HeroSection from './pages/HeroSection';
 import Services from './pages/services';
 

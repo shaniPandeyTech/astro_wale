@@ -1,26 +1,31 @@
+"use client"
 import Image from "next/image";
 import React from "react";
 import { FaArrowAltCircleRight, FaArrowRight, FaHome, faArrowRight } from "react-icons/fa";
 import Breadcrumb from "./breadcrumb";
-
+import { useEffect, useState } from 'react';
 const Horoscopedaily = () => {
+  const [horoscopes, setHoroscopes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const activeSign = "Aries"; // You can make this dynamic later
 
-
-  const horoscopes = [
-    { name: 'Aries', date: '21 Mar - 20 Apr', icon: '/images/aries.svg' },
-    { name: 'Taurus', date: '21 Apr - 21 May', icon: '/images/taurus.svg' },
-    { name: 'Gemini', date: '22 May - 21 Jun', icon: '/images/gemini.svg' },
-    { name: 'Cancer', date: '22 Jun - 22 Jul', icon: '/images/cancer.svg' },
-    { name: 'Leo', date: '23 Jun - 23 Aug', icon: '/images/leo.svg' },
-    { name: 'Virgo', date: '24 Aug - 22 Sep', icon: '/images/virgo.svg' },
-    { name: 'Libra', date: '23 Sep - 23 Oct', icon: '/images/libra.svg' },
-    { name: 'Scorpio', date: '24 Oct - 22 Nov', icon: '/images/scorpio.svg' },
-    { name: 'Sagittarius', date: '23 Nov - 21 Dec', icon: '/images/sagittarius.svg' },
-    { name: 'Capricorn', date: '22 Dec - 20 Jan', icon: '/images/capricorn.svg' },
-    { name: 'Aquarius', date: '21 Jan - 18 Feb', icon: '/images/aquarius.svg' },
-    { name: 'Pisces', date: '19 Feb - 20 Mar', icon: '/images/pisces.svg' },
-  ];
+  useEffect(() => {
+    fetch('https://api.indiandetectiveservices.com/public/api/v1/reviews')
+      .then(res => res.json())
+      .then(resData => {
+        if (resData.success === 1 && Array.isArray(resData.data)) {
+          setHoroscopes(resData.data); // ✅ store only data array
+        } else {
+          console.error('API call successful but data missing');
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching reviews:', err);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <>
