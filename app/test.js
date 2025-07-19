@@ -8,7 +8,7 @@ import Testimonials from './pages/Testimonials';
 import CelebrityTestimonial from './pages/CelebrityTestimonials';
 import FaqAccordion from './pages/FaqAccordion';
 import Slider from './pages/CelebrityTestimonials';
-import Faqs from './pages/Faqs';
+import Faqs from './components/Faqs';
 // import Faqs from './pages/Faqs';
 import Header from './pages/Header';
 
