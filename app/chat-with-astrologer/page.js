@@ -1,7 +1,7 @@
-import Astrologers from "../pages/astrologers";
-import AstroPromoSection from "../pages/AstroPromoSection";
+import Astrologers from "../components/astrologers";
+import AstroPromoSection from "../components/AstroPromoSection";
 import Breadcrumb from "../pages/breadcrumb";
-import Faqs from "../pages/Faqs";
+import Faqs from "../components/Faqs";
 import HowTalkAstrologer from "../pages/howtalkastrologer";
 
 export default function ChatWithAstrologer() {
