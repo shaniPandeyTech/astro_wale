@@ -31,11 +31,15 @@ export default {
                 '0%': { transform: 'scale(0)' },
                 '100%': { transform: 'scale(1)' },
               },
+              fadeSlideIn: {
+                '0%': { opacity: '0', transform: 'translateY(12px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
             },
             animation: {
               popIn: 'popIn 0.4s ease-out forwards',
               'spin-slow': 'spin 50s linear infinite',
-              
+              fadeSlideIn: 'fadeSlideIn 0.5s ease-out forwards',
             },
     },
   },
