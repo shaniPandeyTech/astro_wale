@@ -58,11 +58,11 @@ export default function AstrologySlider() {
 
   return (
     <section
-      className="relative text-white py-20 overflow-hidden"
+      className="relative text-white py-12 sm:py-20 overflow-hidden"
       style={{ backgroundImage: "url('/images/heroBannerBg.png')" }}
     >
-      <div className="container mx-auto px-4 z-10 relative py-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center px-8 md:px-12">
+      <div className="container mx-auto px-4 z-10 relative py-4 sm:py-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-2 sm:px-8 md:px-12">
           {/* Sliding Text Section */}
           <div className="space-y-8 overflow-hidden">
             <div className="relative">
@@ -78,10 +78,10 @@ export default function AstrologySlider() {
                     key={index}
                     className="w-full flex-shrink-0 space-y-4 pr-4"
                   >
-                    <h1 className="text-4xl md:text-[40px] font-bold leading-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-[40px] font-bold leading-tight">
                       {slide.title}
                     </h1>
-                    <p className="text-xl text-purple-100">
+                    <p className="text-base sm:text-xl text-purple-100">
                       {slide.description}
                     </p>
                   </div>
@@ -90,10 +90,10 @@ export default function AstrologySlider() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-white text-[#460190] p-4 rounded-2xl text-lg cursor-pointer hover:bg-gray-100 transition-colors">
+              <button className="bg-white text-[#460190] px-5 py-3 sm:p-4 rounded-2xl text-base sm:text-lg cursor-pointer hover:bg-gray-100 transition-colors">
                 Get Consultation
               </button>
-              <button className="border border-white text-white p-4 text-lg rounded-2xl cursor-pointer hover:bg-white/10 transition-colors">
+              <button className="border border-white text-white px-5 py-3 sm:p-4 text-base sm:text-lg rounded-2xl cursor-pointer hover:bg-white/10 transition-colors">
                 Chat with Astrologer
               </button>
             </div>
@@ -101,7 +101,7 @@ export default function AstrologySlider() {
 
           {/* Image Section */}
           <div className="flex justify-center">
-            <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+            <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96">
               <Image
                 src="/images/sign.png"
                 alt="Zodiac Wheel"

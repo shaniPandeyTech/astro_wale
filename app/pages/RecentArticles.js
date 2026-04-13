@@ -35,7 +35,7 @@ const articles = [
 
 export default function RecentArticles() {
   return (
-    <section className="py-20 bg-[#FFF7F1]">
+    <section className="py-12 sm:py-20 bg-[#FFF7F1]">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
@@ -43,7 +43,7 @@ export default function RecentArticles() {
             <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-white border border-orange-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
               Blog & Insights
             </span>
-            <h2 className="text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+            <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
               Recent <span className="text-orange-500">Articles</span>
             </h2>
             <p className="text-gray-500 mt-2 max-w-md">

@@ -24,7 +24,7 @@ const stats = [
 
 const HoroscopeList = () => {
   return (
-    <section className="py-20 bg-[#FFF7F1]">
+    <section className="py-12 sm:py-20 bg-[#FFF7F1]">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -32,7 +32,7 @@ const HoroscopeList = () => {
             <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-white border border-orange-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
               Daily Predictions
             </span>
-            <h2 className="text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+            <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
               Free Daily <span className="text-orange-500">Horoscopes</span>
             </h2>
             <p className="text-gray-500 mt-2 max-w-md">
@@ -49,17 +49,17 @@ const HoroscopeList = () => {
         </div>
 
         {/* Zodiac Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-5">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 sm:gap-5">
           {horoscopes.map((item) => (
             <a
               key={item.name}
               href={`/daily-horoscope/${item.name.toLowerCase()}`}
               className="group flex flex-col items-center text-center px-4 py-5 rounded-2xl bg-white border border-transparent cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100/50 hover:border-orange-200"
             >
-              <div className="w-20 h-20 rounded-xl bg-orange-50 flex items-center justify-center mb-3 transition-colors duration-300 group-hover:bg-orange-100">
-                <img src={item.icon} alt={item.name} className="w-14 h-14 transition-transform duration-300 group-hover:scale-110" />
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-orange-50 flex items-center justify-center mb-2 sm:mb-3 transition-colors duration-300 group-hover:bg-orange-100">
+                <img src={item.icon} alt={item.name} className="w-10 h-10 sm:w-14 sm:h-14 transition-transform duration-300 group-hover:scale-110" />
               </div>
-              <p className="font-semibold text-gray-800 group-hover:text-orange-600 transition-colors duration-300">{item.name}</p>
+              <p className="font-semibold text-sm sm:text-base text-gray-800 group-hover:text-orange-600 transition-colors duration-300">{item.name}</p>
               <p className="text-xs text-gray-400 mt-0.5">{item.date}</p>
               <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-medium text-orange-400 bg-orange-50 px-3 py-1 rounded-full transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white">
                 Read More
@@ -70,10 +70,10 @@ const HoroscopeList = () => {
         </div>
 
         {/* Statistics */}
-        <div className="mt-14 bg-white px-6 py-10 rounded-2xl grid grid-cols-2 sm:grid-cols-4 text-center gap-6 border border-orange-100">
+        <div className="mt-10 sm:mt-14 bg-white px-4 sm:px-6 py-8 sm:py-10 rounded-2xl grid grid-cols-2 sm:grid-cols-4 text-center gap-4 sm:gap-6 border border-orange-100">
           {stats.map((stat, i) => (
             <div key={i} className="flex flex-col items-center">
-              <p className="text-2xl md:text-3xl font-bold text-orange-600">{stat.value}</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-orange-600">{stat.value}</p>
               <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
             </div>
           ))}

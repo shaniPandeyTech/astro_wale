@@ -12,7 +12,7 @@ export default function HoroscopeVale() {
       <div className="container mx-auto px-4 relative">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 py-20 gap-10 items-center z-10">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               Why Choose Horoscope Vale?
             </h2>
             <p className="text-lg mb-8 max-w-xl">

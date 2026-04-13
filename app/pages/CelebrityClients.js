@@ -42,7 +42,7 @@ const CelebrityClients = () => {
   };
 
   return (
-    <section className="py-20 bg-[#FFF7F1]">
+    <section className="py-12 sm:py-20 bg-[#FFF7F1]">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
@@ -50,8 +50,8 @@ const CelebrityClients = () => {
             <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-white border border-orange-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
               Video Reviews
             </span>
-            <h2 className="text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
-              What Our Customers Say About <br />
+            <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+              What Our Customers Say About <br className="hidden sm:block" />
               <span className="text-orange-500">Horoscope Vale</span>
             </h2>
             <p className="text-gray-500 mt-2 max-w-md">
@@ -116,7 +116,7 @@ const CelebrityClients = () => {
               : testimonials.map((item) => (
                   <div
                     key={item.id}
-                    className="group min-w-[280px] max-w-[280px] flex-shrink-0 rounded-2xl overflow-hidden bg-white border border-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100/50 hover:border-orange-200"
+                    className="group min-w-[240px] max-w-[240px] sm:min-w-[280px] sm:max-w-[280px] flex-shrink-0 rounded-2xl overflow-hidden bg-white border border-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100/50 hover:border-orange-200"
                   >
                     {/* Video Thumbnail */}
                     <div className="relative overflow-hidden cursor-pointer">

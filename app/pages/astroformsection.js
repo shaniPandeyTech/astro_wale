@@ -21,7 +21,7 @@ export default function AstroFormSection() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-orange-500 via-orange-500 to-orange-600 text-white py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-orange-500 via-orange-500 to-orange-600 text-white py-12 sm:py-20 overflow-hidden">
       {/* Decorative circles */}
       <div className="absolute top-10 left-10 w-64 h-64 bg-white/5 rounded-full blur-2xl" />
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
@@ -35,7 +35,7 @@ export default function AstroFormSection() {
               <span className="inline-block text-sm font-semibold tracking-wider uppercase bg-white/15 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full mb-5 shadow-sm">
                 Expert Consultation
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-snug">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-snug">
                 Confused About Life? <br />
                 Get <span className="text-yellow-200">Expert Guidance</span>
               </h2>
@@ -67,7 +67,7 @@ export default function AstroFormSection() {
 
           {/* Right: Form Card */}
           <div>
-            <form onSubmit={handleSubmit} className="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl w-full md:w-[560px] border border-white/20">
+            <form onSubmit={handleSubmit} className="bg-white text-gray-800 p-5 sm:p-8 rounded-2xl shadow-2xl w-full md:w-[560px] border border-white/20">
               <h3 className="text-2xl font-bold mb-1">Ask Your Question!</h3>
               <p className="text-sm text-gray-400 mb-6 pb-5 border-b border-gray-100">Fill in your details and our astrologers will get back to you.</p>
 
@@ -96,7 +96,7 @@ export default function AstroFormSection() {
                   </select>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-sm font-medium text-gray-700 mb-1 block">Date of Birth</label>
                     <input

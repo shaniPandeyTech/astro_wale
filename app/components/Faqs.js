@@ -40,7 +40,7 @@ function AccordionItem({ item, index, isOpen, onToggle }) {
   return (
     <div className={`rounded-2xl border transition-all duration-300 ${isOpen ? 'border-orange-200 shadow-lg shadow-orange-100/40 bg-white' : 'border-gray-100 bg-white hover:border-orange-100'}`}>
       <button
-        className="w-full flex items-center justify-between px-6 py-5 cursor-pointer group"
+        className="w-full flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 cursor-pointer group"
         onClick={() => onToggle(index)}
       >
         <div className="flex items-center gap-4">
@@ -63,7 +63,7 @@ function AccordionItem({ item, index, isOpen, onToggle }) {
         className="overflow-hidden transition-all duration-500 ease-in-out"
         style={{ maxHeight: `${height}px` }}
       >
-        <div ref={contentRef} className="px-6 pb-5 pl-[4.5rem]">
+        <div ref={contentRef} className="px-4 sm:px-6 pb-5 pl-14 sm:pl-[4.5rem]">
           <p className="text-gray-500 leading-relaxed text-[15px]">{item.content}</p>
         </div>
       </div>
@@ -79,14 +79,14 @@ export default function Faqs() {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
           <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-orange-50 border border-orange-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
             Got Questions?
           </span>
-          <h2 className="text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+          <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
             Frequently Asked <span className="text-orange-500">Questions</span>
           </h2>
           <p className="text-gray-500 mt-2 max-w-lg mx-auto">

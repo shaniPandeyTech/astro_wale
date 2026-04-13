@@ -2,16 +2,16 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-12 sm:py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Text Side */}
           <div className="space-y-6">
             <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-orange-50 px-4 py-1.5 rounded-full">
               About Us
             </span>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
               About Horoscope Vata - <br />
               <span className="text-orange-500">Unlock The Secrets</span> of Your Destiny
             </h2>
@@ -30,7 +30,7 @@ export default function About() {
             </p>
 
             {/* Stats Row */}
-            <div className="flex gap-8 pt-2">
+            <div className="flex flex-wrap gap-6 sm:gap-8 pt-2">
               <div>
                 <p className="text-3xl font-bold text-gray-900">25+</p>
                 <p className="text-sm text-gray-400">Years Experience</p>
@@ -63,7 +63,7 @@ export default function About() {
 
           {/* Image Side */}
           <div className="flex justify-center">
-            <div className="relative w-80 h-80 lg:w-[440px] lg:h-[440px] rounded-3xl overflow-hidden bg-orange-50 p-6">
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[440px] aspect-square rounded-3xl overflow-hidden bg-orange-50 p-4 sm:p-6">
               <Image
                 src="/images/horoscopeValue.png"
                 alt="Zodiac Wheel"

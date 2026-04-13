@@ -60,7 +60,7 @@ const Testimonials = () => {
   const translateX = `-${activeIndex * cardWidth}%`;
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
@@ -68,8 +68,8 @@ const Testimonials = () => {
             <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-white border border-orange-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
               Testimonials
             </span>
-            <h2 className="text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
-              What Our Customers Say About <br />
+            <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+              What Our Customers Say About <br className="hidden sm:block" />
               <span className="text-orange-500">Horoscope Vale</span>
             </h2>
             <p className="text-gray-500 mt-2 max-w-md">
@@ -113,15 +113,15 @@ const Testimonials = () => {
             style={{ transform: `translateX(${translateX})` }}
           >
             {/* Left spacer so first card can be centred */}
-            <div className="flex-shrink-0" style={{ width: `${100 / 3}%` }} />
+            <div className="flex-shrink-0 hidden sm:block" style={{ width: `${100 / 3}%` }} />
 
             {testimonials.map((item, index) => {
               const isCentre = index === activeIndex;
               return (
                 <div
                   key={item.id}
-                  className="px-3 flex-shrink-0"
-                  style={{ width: `${100 / 3}%` }}
+                  className="px-2 sm:px-3 flex-shrink-0"
+                  style={{ width: typeof window !== 'undefined' && window.innerWidth < 640 ? '85%' : `${100 / 3}%` }}
                 >
                   <div
                     className={`rounded-2xl p-6 border-2 transition-all duration-700 ease-in-out origin-center ${
@@ -163,7 +163,7 @@ const Testimonials = () => {
             })}
 
             {/* Right spacer so last card can be centred */}
-            <div className="flex-shrink-0" style={{ width: `${100 / 3}%` }} />
+            <div className="flex-shrink-0 hidden sm:block" style={{ width: `${100 / 3}%` }} />
           </div>
         </div>
 

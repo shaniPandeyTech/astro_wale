@@ -9,7 +9,7 @@ const Horoscopedaily = ({ activeSign = "aries" }) => {
   const [activeTab, setActiveTab] = useState("daily");
   const [horoscopeContent, setHoroscopeContent] = useState(null);
   const router = useRouter();
-  // Load zodiac signs
+
   useEffect(() => {
     fetch("https://api.indiandetectiveservices.com/public/api/v1/zodiac-signs")
       .then((res) => res.json())
@@ -41,128 +41,149 @@ const Horoscopedaily = ({ activeSign = "aries" }) => {
 
   return (
     <>
-      <Breadcrumb page={"Daily Horoscope"} />
+      <Breadcrumb page="Daily Horoscope" />
 
-
-      <section className="bg-[#FFF3EA]">
-        <div className="container mx-auto  text-black py-6 ">
-          <h2 className="text-3xl font-bold mb-1">Today’s Horoscope</h2>
-          <p className="text-gray-600 mb-6">Discover what the stars have in store for you today!</p>
+      {/* Hero Header */}
+      <section className="bg-[#FFF7F1] py-10">
+        <div className="container mx-auto px-4">
+          <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-white border border-orange-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
+            Horoscope
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+            Today&apos;s <span className="text-orange-500 capitalize">{activeSign}</span> Horoscope
+          </h2>
+          <p className="text-gray-500 mt-2 max-w-md">
+            Discover what the stars have in store for you today!
+          </p>
         </div>
       </section>
-      <div className="container mx-auto bg-white text-black pt-8 pb-20">
 
+      {/* Main Content */}
+      <section className="py-10 bg-white">
+        <div className="container mx-auto px-4">
 
-        {/* Zodiac Icons */}
-        <div className="flex space-x-4 overflow-x-auto py-8 border-b mb-6">
-          {horoscopes.map((sign) => (
-            <div
-              key={sign.id}
-              onClick={() => router.push(`/daily-horoscope/${sign.name.toLowerCase()}`)}
-              className={`flex flex-col items-center cursor-pointer ${sign.name.toLowerCase() === activeSign ? "text-orange-500" : "text-gray-500"
+          {/* Zodiac Sign Selector */}
+          <div
+            className="flex gap-3 overflow-x-auto pb-6 mb-8 border-b border-gray-100"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+          >
+            <style jsx>{`div::-webkit-scrollbar { display: none; }`}</style>
+            {horoscopes.map((sign) => {
+              const isActive = sign.name.toLowerCase() === activeSign;
+              return (
+                <div
+                  key={sign.id}
+                  onClick={() => router.push(`/daily-horoscope/${sign.name.toLowerCase()}`)}
+                  className={`flex flex-col items-center cursor-pointer flex-shrink-0 p-3 rounded-2xl transition-all duration-300 ${
+                    isActive
+                      ? 'bg-orange-50 border-2 border-orange-300 shadow-sm'
+                      : 'border-2 border-transparent hover:bg-gray-50'
+                  }`}
+                >
+                  <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-2 transition-colors duration-300 ${
+                    isActive ? 'bg-orange-100' : 'bg-gray-50'
+                  }`}>
+                    <Image src={sign.icon} width={48} height={48} alt={sign.name} className="w-8 h-8 sm:w-12 sm:h-12" />
+                  </div>
+                  <span className={`text-xs font-medium transition-colors duration-300 ${
+                    isActive ? 'text-orange-600' : 'text-gray-500'
+                  }`}>
+                    {sign.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Tabs */}
+          <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`capitalize px-5 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 ${
+                  activeTab === tab
+                    ? 'bg-orange-500 text-white shadow-sm shadow-orange-200'
+                    : 'bg-gray-50 text-gray-600 border border-gray-200 hover:border-orange-200 hover:text-orange-500'
                 }`}
-            >
-              <div className="w-24 h-24 bg-orange-100 rounded-full flex items-center justify-center mb-1">
-                <Image src={sign.icon} width={90} height={90} alt={sign.name} />
+              >
+                {tab}&apos;s Horoscope
+              </button>
+            ))}
+          </div>
+
+          {/* Horoscope Content + Lucky Items */}
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Content */}
+            <div className="flex-1">
+              <div className="bg-[#FFF7F1] rounded-2xl p-4 sm:p-6 md:p-8 border border-orange-100">
+                {horoscopeContent?.content ? (
+                  <div
+                    className="prose prose-gray max-w-none text-gray-600 leading-relaxed [&>p]:mb-4 [&>h3]:text-gray-900 [&>h3]:font-bold [&>h3]:mb-2 [&>h4]:text-gray-800 [&>h4]:font-semibold [&>h4]:mb-2"
+                    dangerouslySetInnerHTML={{ __html: horoscopeContent.content }}
+                  />
+                ) : (
+                  <div className="text-center py-12">
+                    <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ea580c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <p className="text-gray-500">No horoscope available for this period.</p>
+                  </div>
+                )}
               </div>
-              <span className="text-xs">{sign.name}</span>
             </div>
-          ))}
-        </div>
 
+            {/* Lucky Items Sidebar */}
+            <div className="md:w-80 flex-shrink-0 space-y-4">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Lucky Items for You</h3>
 
-        {/* Tabs */}
-        <div className="flex space-x-3 mt-4">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`capitalize px-4 py-2 rounded-full text-sm border ${activeTab === tab
-                ? "bg-orange-100 text-orange-600 border-orange-400"
-                : "border-gray-300 text-gray-600"
-                }`}
-            >
-              {tab}'s Horoscope
-            </button>
-          ))}
-        </div>
+              {horoscopeContent ? (
+                <>
+                  <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#d97706" stroke="none"><circle cx="12" cy="12" r="10"/></svg>
+                      </span>
+                      <p className="text-sm text-gray-500 capitalize">Lucky Color for {activeTab}</p>
+                    </div>
+                    <p className={`font-bold text-lg ${horoscopeContent.lucky_color ? 'text-gray-900' : 'text-gray-400'}`}>
+                      {horoscopeContent.lucky_color || "Not available"}
+                    </p>
+                  </div>
 
-        {/* Horoscope Details */}
-        <div className="mt-6 flex flex-col md:flex-row gap-6">
-          <div className="flex-1 space-y-4">
-            {horoscopeContent?.content ? (
-              <div dangerouslySetInnerHTML={{ __html: horoscopeContent.content }} />
-            ) : (
-              <p>No horoscope available</p>
-            )}
-            {/* {horoscopeContent.content} */}
-            {/* <p>
-              Today is an exciting day full of fresh prospects and opportunities. It is time to accept change and venture into unexplored territory. Your
-              unique ideas and active attitude will be greatly appreciated by your coworkers and superiors.
-            </p> */}
+                  <div className="bg-rose-50 border border-rose-100 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="w-8 h-8 rounded-lg bg-rose-100 flex items-center justify-center text-rose-500 font-bold text-sm">
+                        #
+                      </span>
+                      <p className="text-sm text-gray-500 capitalize">Lucky Number for {activeTab}</p>
+                    </div>
+                    <p className={`font-bold text-lg ${horoscopeContent.lucky_number ? 'text-gray-900' : 'text-gray-400'}`}>
+                      {horoscopeContent.lucky_number || "Not available"}
+                    </p>
+                  </div>
 
-            {/* <div className="bg-orange-100 text-orange-700 p-3 rounded-lg text-sm font-semibold">
-              › Tip for the day: Spend some time with loved ones to recharge emotionally.
-            </div> */}
-
-            {/* <div>
-              <h4 className="font-semibold mb-1">Career & Finance</h4>
-              <p className="text-gray-700">
-                New opportunities could emerge unexpectedly — be ready to grab them! However, don’t rush decisions, especially if they involve long-term
-                commitments. A minor gain in finances is possible.
-              </p>
-            </div> */}
-
-            {/* <div>
-              <h4 className="font-semibold mb-1">Love & Relationships</h4>
-              <p className="text-gray-700">
-                You’ll feel more connected with your partner today. If single, someone from your past might reach out — think twice before reigniting old
-                flames.
-              </p>
-            </div> */}
-            {/* 
-            <div>
-              <h4 className="font-semibold mb-1">Health & Wellness</h4>
-              <p className="text-gray-700">
-                Energy levels are high, but avoid overexertion. Light meditation or evening walks can help maintain balance.
-              </p>
-            </div> */}
-          </div>
-
-          {/* Lucky Items */}
-          <div className="md:w-1/3 bg-white space-y-4">
-            <h3 className="text-xl font-semibold">Lucky items for you</h3>
-
-            {horoscopeContent ? (
-              <>
-                <div className="bg-yellow-100 p-3 rounded">
-                  <p className="text-sm capitalize">{activeSign} Lucky Color For {activeTab}</p>
-                  <p className={`font-bold ${horoscopeContent.lucky_color ? "text-black" : "text-gray-500"}`}>
-                    {horoscopeContent.lucky_color || "Not available now"}
-                  </p>
+                  <div className="bg-sky-50 border border-sky-100 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="w-8 h-8 rounded-lg bg-sky-100 flex items-center justify-center text-sky-500 font-bold text-sm">
+                        A
+                      </span>
+                      <p className="text-sm text-gray-500 capitalize">Lucky Alphabets</p>
+                    </div>
+                    <p className={`font-bold text-lg ${horoscopeContent.lucky_alphabet ? 'text-gray-900' : 'text-gray-400'}`}>
+                      {horoscopeContent.lucky_alphabet || "Not available"}
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <div className="bg-gray-50 rounded-2xl p-6 text-center">
+                  <p className="text-gray-400 text-sm">Lucky items not available for this sign.</p>
                 </div>
-
-                <div className="bg-red-100 p-3 rounded">
-                  <p className="text-sm capitalize">{activeSign} Lucky Number For {activeTab}</p>
-                  <p className={`font-bold ${horoscopeContent.lucky_number ? "text-black" : "text-gray-500"}`}>
-                    {horoscopeContent.lucky_number || "Not available now"}
-                  </p>
-                </div>
-
-                <div className="bg-blue-100 p-3 rounded">
-                  <p className="text-sm capitalize">{activeSign} Lucky Alphabets</p>
-                  <p className={`font-bold ${horoscopeContent.lucky_alphabet ? "text-black" : "text-gray-500"}`}>
-                    {horoscopeContent.lucky_alphabet || "Not available now"}
-                  </p>
-                </div>
-              </>
-            ) : (
-              <div className="text-gray-500">Horoscope data not available for this sign.</div>
-            )}
-
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

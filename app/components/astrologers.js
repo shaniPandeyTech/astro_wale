@@ -58,7 +58,7 @@ export default function Astrologers(props) {
   };
 
   return (
-    <section id="astrologers" className={`${props.heading ? "pt-20" : ""} py-20 bg-gray-50`}>
+    <section id="astrologers" className={`${props.heading ? "pt-12 sm:pt-20" : ""} py-12 sm:py-20 bg-gray-50`}>
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
@@ -66,7 +66,7 @@ export default function Astrologers(props) {
             <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-orange-50 px-4 py-1.5 rounded-full mb-4">
               Expert Guidance
             </span>
-            <h2 className="text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+            <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
               Chat with <span className="text-orange-500">Astrologer</span>
             </h2>
             <p className="text-gray-500 mt-2 max-w-md">
@@ -145,7 +145,7 @@ export default function Astrologers(props) {
               : astrologer.map((item, index) => (
                   <div
                     key={index}
-                    className="group relative min-w-[260px] max-w-[260px] bg-white rounded-2xl border border-gray-100 p-4 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100/50 hover:border-orange-200 flex-shrink-0"
+                    className="group relative min-w-[220px] max-w-[220px] sm:min-w-[260px] sm:max-w-[260px] bg-white rounded-2xl border border-gray-100 p-3 sm:p-4 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100/50 hover:border-orange-200 flex-shrink-0"
                   >
                     {/* Badge */}
                     {index % 4 === 0 && (

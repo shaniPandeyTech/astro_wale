@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function AppDownloadSection() {
   return (
-    <section className="relative bg-gradient-to-br from-orange-500 via-orange-500 to-orange-600 text-white py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-orange-500 via-orange-500 to-orange-600 text-white py-12 sm:py-20 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
@@ -17,7 +17,7 @@ export default function AppDownloadSection() {
               Mobile App
             </span>
 
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-snug">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-snug">
               Download Our App &ndash; <br />
               Your Personal <span className="text-yellow-200">Astrology Guide</span> Anytime, Anywhere!
             </h2>

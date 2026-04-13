@@ -13,13 +13,13 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 bg-[#FFF7F1]">
+    <section id="services" className="py-12 sm:py-20 bg-[#FFF7F1]">
       <div className="container mx-auto px-4">
         <div className="mb-12">
           <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-white border border-orange-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
             Our Services
           </span>
-          <h2 className="w-full md:w-[520px] text-left text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+          <h2 className="w-full md:w-[520px] text-left text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
             Our Astrology Services - <br />
             <span className="text-orange-500">Unlock The Secrets</span> of Your Life!
           </h2>
