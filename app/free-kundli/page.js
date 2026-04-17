@@ -1,8 +1,8 @@
-import Astrologers from "../pages/astrologers";
+import Astrologers from "../components/astrologers";
 import FaqAccordion from "../pages/FaqAccordion";
-import Faqs from "../pages/Faqs";
+import Faqs from "../components/Faqs";
 import KundliFeatures from "../pages/KundliFeature";
-import AstroPromoSection from "../pages/AstroPromoSection";
+import AstroPromoSection from "../components/AstroPromoSection";
 import FreeKundliForm from "../pages/FreeKundliForm";
 
 export default function DetailsPage() {
