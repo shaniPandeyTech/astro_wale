@@ -19,8 +19,8 @@ export default function Services() {
           <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-white border border-orange-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
             Our Services
           </span>
-          <h2 className="w-full md:w-[520px] text-left text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
-            Our Astrology Services - <br />
+          <h2 className="max-w-full md:max-w-[520px] text-left text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+            Our Astrology Services - <br className="hidden sm:block" />
             <span className="text-orange-500">Unlock The Secrets</span> of Your Life!
           </h2>
           <p className="text-gray-500 mt-3 max-w-lg">

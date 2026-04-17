@@ -39,35 +39,21 @@ export default function AstroFormSection() {
                 Confused About Life? <br />
                 Get <span className="text-yellow-200">Expert Guidance</span>
               </h2>
-              <p className="text-lg text-white/80 mb-8 max-w-md leading-relaxed">
+              <p className="text-base sm:text-lg text-white/80 mb-8 max-w-md mx-auto md:mx-0 leading-relaxed">
                 Ask your most pressing questions, and let our astrologers reveal the answers hidden in the stars!
               </p>
 
-              {/* Trust points */}
-              <div className="flex flex-wrap gap-4 mb-8">
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  100% Confidential
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Verified Astrologers
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  24/7 Available
-                </div>
-              </div>
+
             </div>
 
-            <div className="relative md:absolute md:bottom-0 md:left-0">
-              <img src="/images/confuse.png" alt="Astrologer Thinking" width={430} height={400} />
+            <div className="relative md:absolute md:bottom-[-80px] md:left-0 flex justify-center md:block">
+              <img src="/images/confuse.png" alt="Astrologer Thinking" width={430} height={400} className="w-64 sm:w-80 md:w-[430px] h-auto" />
             </div>
           </div>
 
           {/* Right: Form Card */}
-          <div>
-            <form onSubmit={handleSubmit} className="bg-white text-gray-800 p-5 sm:p-8 rounded-2xl shadow-2xl w-full md:w-[560px] border border-white/20">
+          <div className="w-full">
+            <form onSubmit={handleSubmit} className="bg-white text-gray-800 p-5 sm:p-8 rounded-2xl shadow-2xl w-full max-w-[560px] md:ml-auto border border-white/20">
               <h3 className="text-2xl font-bold mb-1">Ask Your Question!</h3>
               <p className="text-sm text-gray-400 mb-6 pb-5 border-b border-gray-100">Fill in your details and our astrologers will get back to you.</p>
 

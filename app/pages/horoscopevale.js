@@ -6,16 +6,16 @@ import Image from "next/image";
 export default function HoroscopeVale() {
   return (
     <section
-      className="relative bg-cover bg-center bg-no-repeat text-white"
+      className="relative bg-cover bg-center bg-no-repeat text-white overflow-hidden"
       style={{ backgroundImage: "url('/images/panditjeebg.svg')" }}
     >
       <div className="container mx-auto px-4 relative">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 py-20 gap-10 items-center z-10">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 py-12 sm:py-16 md:py-20 gap-10 items-center z-10">
           <div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               Why Choose Horoscope Vale?
             </h2>
-            <p className="text-lg mb-8 max-w-xl">
+            <p className="text-base sm:text-lg mb-8 max-w-xl">
               Find clarity and direction in life—trust Horoscope Vale for all
               your astrology needs!
             </p>
@@ -74,13 +74,13 @@ export default function HoroscopeVale() {
           </div>
         </div>
 
-        <div className="flex justify-center relative lg:absolute lg:right-0 lg:bottom-0">
+        <div className="flex justify-center relative lg:absolute lg:right-0 lg:bottom-0 pb-6 lg:pb-0">
           <Image
             src="/images/panditji.svg"
             alt="Astrologer"
             width={650}
             height={888}
-            className="w-full max-w-[750px] rounded-xl object-cover"
+            className="w-full max-w-[320px] sm:max-w-[480px] md:max-w-[600px] lg:max-w-[750px] rounded-xl object-cover"
           />
         </div>
 

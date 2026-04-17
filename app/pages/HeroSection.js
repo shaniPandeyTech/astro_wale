@@ -101,13 +101,13 @@ export default function AstrologySlider() {
 
           {/* Image Section */}
           <div className="flex justify-center">
-            <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96">
+            <div className="relative w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96">
               <Image
                 src="/images/sign.png"
                 alt="Zodiac Wheel"
                 width={522}
                 height={522}
-                className="animate-spin-slow"
+                className="animate-spin-slow w-full h-full"
               />
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function AstrologySlider() {
       {/* Prev Button */}
       <button
         onClick={goPrev}
-        className="cursor-pointer absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white flex items-center justify-center hover:bg-white/40 active:scale-90 transition-all duration-200 shadow-md z-20"
+        className="cursor-pointer hidden sm:flex absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white items-center justify-center hover:bg-white/40 active:scale-90 transition-all duration-200 shadow-md z-20"
         aria-label="Previous slide"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
@@ -126,7 +126,7 @@ export default function AstrologySlider() {
       {/* Next Button */}
       <button
         onClick={goNext}
-        className="cursor-pointer absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white flex items-center justify-center hover:bg-white/40 active:scale-90 transition-all duration-200 shadow-md z-20"
+        className="cursor-pointer hidden sm:flex absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white items-center justify-center hover:bg-white/40 active:scale-90 transition-all duration-200 shadow-md z-20"
         aria-label="Next slide"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>

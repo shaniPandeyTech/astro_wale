@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const testimonials = [
   {
@@ -55,8 +55,16 @@ const Testimonials = () => {
     if (canGoRight) setActiveIndex((prev) => prev + 1);
   };
 
-  // Offset: spacer takes slot 0, so card[activeIndex] lands in the centre (slot 2 of 3)
-  const cardWidth = 100 / 3;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 640);
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  const cardWidth = isMobile ? 100 : 100 / 3;
   const translateX = `-${activeIndex * cardWidth}%`;
 
   return (
@@ -120,8 +128,7 @@ const Testimonials = () => {
               return (
                 <div
                   key={item.id}
-                  className="px-2 sm:px-3 flex-shrink-0"
-                  style={{ width: typeof window !== 'undefined' && window.innerWidth < 640 ? '85%' : `${100 / 3}%` }}
+                  className="px-2 sm:px-3 flex-shrink-0 w-full sm:w-1/3"
                 >
                   <div
                     className={`rounded-2xl p-6 border-2 transition-all duration-700 ease-in-out origin-center ${
