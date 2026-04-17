@@ -15,48 +15,69 @@ const horoscopes = [
   { name: 'Pisces', date: '19 Feb - 20 Mar', icon: '/images/pisces.svg' },
 ];
 
+const stats = [
+  { value: '50,341+', label: 'Verified Astrologers' },
+  { value: '2.1+ Billion', label: 'Minutes of Consultations' },
+  { value: '92+ Million', label: 'Happy Customers' },
+  { value: '4.9/5', label: 'Average Customer Rating' },
+];
+
 const HoroscopeList = () => {
   return (
-    <section className="py-12 px-4 md:px-16 text-center">
+    <section className="py-12 sm:py-20 bg-[#FFF7F1]">
       <div className="container mx-auto px-4">
-      <div className="flex justify-between items-center flex-wrap gap-4 mb-8">
-        <h2 className="text-3xl font-bold">Free Daily Horoscopes</h2>
-        <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-3 rounded">
-          Get Your Free Kundli →
-        </button>
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
-        {horoscopes.map((item) => (
-          <div key={item.name} className="flex flex-col items-center text-center">
-            <div className="w-28 h-28  rounded-full flex items-center justify-center mb-2">
-              <img src={item.icon} alt={item.name} className="w-28 h-28" />
-            </div>
-            <p className="font-semibold">{item.name}</p>
-            <p className="text-sm text-gray-500">{item.date}</p>
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span className="inline-block text-sm font-semibold tracking-wider text-orange-500 uppercase bg-white border border-orange-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
+              Daily Predictions
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-snug">
+              Free Daily <span className="text-orange-500">Horoscopes</span>
+            </h2>
+            <p className="text-gray-500 mt-2 max-w-md">
+              Select your zodiac sign and discover what the stars reveal for you today.
+            </p>
           </div>
-        ))}
-      </div>
+          <a
+            href="/free-kundli"
+            className="group inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-xl cursor-pointer transition-all duration-200 shadow-sm shadow-orange-200 active:scale-95 self-start md:self-auto"
+          >
+            Get Your Free Kundli
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
 
-      {/* Statistics */}
-      <div className="mt-12 bg-orange-100 px-6 py-8 rounded-xl grid grid-cols-2 sm:grid-cols-4 text-center gap-4">
-        <div>
-          <p className="text-2xl font-bold text-orange-600">50,341+</p>
-          <p className="text-sm">Verified Astrologers</p>
+        {/* Zodiac Grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 sm:gap-5">
+          {horoscopes.map((item) => (
+            <a
+              key={item.name}
+              href={`/daily-horoscope/${item.name.toLowerCase()}`}
+              className="group flex flex-col items-center text-center px-4 py-5 rounded-2xl bg-white border border-transparent cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100/50 hover:border-orange-200"
+            >
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-orange-50 flex items-center justify-center mb-2 sm:mb-3 transition-colors duration-300 group-hover:bg-orange-100">
+                <img src={item.icon} alt={item.name} className="w-10 h-10 sm:w-14 sm:h-14 transition-transform duration-300 group-hover:scale-110" />
+              </div>
+              <p className="font-semibold text-sm sm:text-base text-gray-800 group-hover:text-orange-600 transition-colors duration-300">{item.name}</p>
+              <p className="text-xs text-gray-400 mt-0.5">{item.date}</p>
+              <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-medium text-orange-400 bg-orange-50 px-3 py-1 rounded-full transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white">
+                Read More
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
+              </span>
+            </a>
+          ))}
         </div>
-        <div>
-          <p className="text-2xl font-bold text-orange-600">2.1+ Billion</p>
-          <p className="text-sm">Minutes of Consultations</p>
+
+        {/* Statistics */}
+        <div className="mt-10 sm:mt-14 bg-white px-4 sm:px-6 py-8 sm:py-10 rounded-2xl grid grid-cols-2 sm:grid-cols-4 text-center gap-4 sm:gap-6 border border-orange-100">
+          {stats.map((stat, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-orange-600">{stat.value}</p>
+              <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
+            </div>
+          ))}
         </div>
-        <div>
-          <p className="text-2xl font-bold text-orange-600">92+ Million</p>
-          <p className="text-sm">Happy Customers</p>
-        </div>
-        <div>
-          <p className="text-2xl font-bold text-orange-600">4.9/5</p>
-          <p className="text-sm">Average Customer Rating</p>
-        </div>
-      </div>
       </div>
     </section>
   );
